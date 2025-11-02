@@ -27,12 +27,12 @@ def greatest(vals, explore_rate):
         return int(np.argmax(vals)), explore_rate
 
 def execution(explore_rate):
-    ab, explore_rate = greatest(cuml_values, explore_rate)
-    bc = bandit(ab)
-    cd, de, ef = reward(cuml_rewards[ab], cuml_actions[ab], cuml_values[ab], bc)
-    cuml_rewards[ab] = cd
-    cuml_actions[ab] = de
-    cuml_values[ab] = ef
+    index, explore_rate = greatest(cuml_values, explore_rate)
+    r = bandit(index)
+    cr, ca, cv = reward(cuml_rewards[ab], cuml_actions[ab], cuml_values[ab], r)
+    cuml_rewards[ab] = cr
+    cuml_actions[ab] = ca
+    cuml_values[ab] = cv
     print(cuml_values)
     print(explore_rate)
     return explore_rate
