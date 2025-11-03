@@ -2,6 +2,7 @@ import numpy as np
 import random
 import matplotlib.pyplot as plt
 
+# --- Variables
 true_values = np.zeros(10)
 true_std = np.ones(10)
 step_counter = 0 
@@ -16,6 +17,7 @@ optimal_action_array = np.empty((2,0))
 overall_steps = 0
 overall_success = 0
 
+# --- Functions
 def random_walks(step_counter, true_values):
     step_counter += 1 
     if step_counter % 100 == 0:
@@ -31,7 +33,7 @@ def bandit(index):
 def reward_tracker(cuml_reward, cuml_actions, cuml_values, bandit_reward):
     cuml_reward += bandit_reward
     cuml_actions += 1
-    cuml_values = cuml_values + (1 / cuml_actions) * (bandit_reward - cuml_values)
+    cuml_values = cuml_values + (2) * (bandit_reward - cuml_values)
     return cuml_reward, cuml_actions, cuml_values
 
 def greatest_selection(explore_rate, cuml_values):
@@ -68,7 +70,7 @@ for _ in range(10000):
     cuml_values[index] = c
     print(optimal_action_array)
 
-
+# --- Plot 
 plt.plot(optimal_action_array[0], optimal_action_array[1])
 plt.xlabel("Overall_Steps")
 plt.ylabel("Overall_Success")
