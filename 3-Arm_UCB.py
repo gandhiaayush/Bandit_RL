@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 # --- environment (non-stationary every 10 steps) ---
 true_values = np.zeros(10)
-true_std    = np.ones(10)
+true_std = np.ones(10)
 
 # --- agent state ---
 cuml_reward  = np.zeros(10, dtype=float)
